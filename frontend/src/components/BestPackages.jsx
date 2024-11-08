@@ -6,9 +6,9 @@ function BestPackages() {
 
   const tabs = ['Hot Deals', 'Backpack', 'Coorg', 'Kolhapur', 'Varkala', 'More'];
   const packages = [
-    { image: assets.coorgPackage1, title: '3 Days, 2 Nights', price: '₹6000 / Person', location: 'Coorg', distance: '6km' },
-    { image: assets.kolhapurPackage1, title: '3 Days, 2 Nights', price: '₹8000 / Person', location: 'Kolhapur', distance: '6km' },
-    { image: assets.varkalaPackage1, title: '3 Days, 2 Nights', price: '₹4000 / Person', location: 'Varkala', distance: '6km' },
+    { image: assets.coorgPackage1, title: '3 Days, 2 Nights', price: '₹6000 / Person', location: 'Coorg', description: 'Explore Coorg in 2 days and 3 nights, with its coffee plantations, waterfalls, and scenic beauty.' },
+    { image: assets.kolhapurPackage1, title: '3 Days, 2 Nights', price: '₹3000 / Person', location: 'Kolhapur', description: 'Explore Kolhapur in 2 days and 3 nights, with its temples, culture, and cuisine.' },
+    { image: assets.varkalaPackage1, title: '3 Days, 2 Nights', price: '₹4000 / Person', location: 'Varkala', description: 'Experience Varkala in 2 days and 3 nights, with its beaches, cliffs, and spiritual vibe.' },
   ];
 
   return (
@@ -21,7 +21,7 @@ function BestPackages() {
           {tabs.map((tab) => (
             <button
               key={tab}
-              className={`py-2 px-4 rounded-full font-semibold ${selectedTab === tab ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+              className={`py-2 px-4 rounded-full font-semibold ${selectedTab === tab ? 'bg-green-500 text-white' : 'bg-gray-300 text-gray-700'}`}
               onClick={() => setSelectedTab(tab)}
             >
               {tab}
@@ -33,17 +33,27 @@ function BestPackages() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {packages.map((pkg, index) => (
             <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <img src={pkg.image} alt={pkg.location} className="w-full h-48 object-cover" />
+              <div className="h-64 w-full">
+                <img src={pkg.image} alt={pkg.location} className="w-full h-full object-cover" />
+              </div>
               <div className="p-4">
-                <h3 className="font-semibold text-lg mb-2">{pkg.title}</h3>
-                <p className="text-gray-500 mb-2">{pkg.price}</p>
-                <p className="text-gray-500 mb-4">{pkg.location} • {pkg.distance}</p>
-                <button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded w-full">
-                  Discover More
-                </button>
+                <h3 className="font-semibold text-lg mb-1">{pkg.title}</h3>
+                <p className="text-gray-700 font-semibold mb-1">{pkg.price}</p>
+                <p className="text-gray-500 mb-4">{pkg.description}</p>
+                <div className="flex justify-between items-center">
+                  <p className="text-gray-500 text-sm">{pkg.location}</p>
+                  <button className="text-green-500 font-semibold">Know More</button>
+                </div>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Discover More Button */}
+        <div className="flex justify-center mt-8">
+          <button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-full">
+            Discover More
+          </button>
         </div>
       </div>
     </section>

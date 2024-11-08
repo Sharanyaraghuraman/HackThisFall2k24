@@ -12,6 +12,7 @@ import varkalaPackage1 from './kerala1.png'
 import coorgImage from './coorg.png'
 import kolhapurImage from './kolhapur.png'
 import varkalaImage from './kerala.png'
+import mapBackground from './map.png'
 
 
 
@@ -29,6 +30,7 @@ export const assets = {
     varkalaPackage1,
     coorgImage,
     kolhapurImage,
-    varkalaImage
+    varkalaImage,
+    mapBackground
 
 }
