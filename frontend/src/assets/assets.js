@@ -6,6 +6,13 @@ import ExperienceIcon from './cal.png'
 import TravelersIcon from './graph.png'
 import PlacesVisitedIcon from './mao.png'
 import TravelHistoryIcon from './history.png'
+import coorgPackage1 from './coorg1.png'
+import kolhapurPackage1 from './kolhapur1.png'
+import varkalaPackage1 from './kerala1.png'
+import coorgImage from './coorg.png'
+import kolhapurImage from './kolhapur.png'
+import varkalaImage from './kerala.png'
+
 
 
 export const assets = {
@@ -16,6 +23,12 @@ export const assets = {
     ExperienceIcon,
     TravelersIcon,
     PlacesVisitedIcon,
-    TravelHistoryIcon
-    
+    TravelHistoryIcon,
+    coorgPackage1,
+    kolhapurPackage1,
+    varkalaPackage1,
+    coorgImage,
+    kolhapurImage,
+    varkalaImage
+
 }
