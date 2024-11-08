@@ -1,0 +1,26 @@
+{
+  "name": "meraguide",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "scripts": {
+    "format": "prettier . -w",
+    "dev": "node src/index.js"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.9.0",
+    "prettier": "^3.3.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "mongoose": "^8.8.0",
+    "morgan": "^1.10.0"
+  }
+}
