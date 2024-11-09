@@ -5,17 +5,36 @@ import { assets } from '../assets/assets';
 
 function Dashboard() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  // Guides data array
+  const guides = [
+    { name: 'Priya Sharma', date: '04 Jan - 10 Jan 2024', image: assets.Profile1 },
+    { name: 'Arjun Patel', date: '05 Feb - 10 Feb 2024', image: assets.Profile2 },
+    { name: 'Sneha Reddy', date: '04 May - 08 May 2024', image: assets.Profile3 },
+    // Add more guides as needed
+  ];
+
+  // Exclusive trips data array
+  const trips = [
+    { title: 'Maharaja Palace', price: '₹750 / Person', discount: '20% OFF', image: assets.varkalaPackage1 },
+    { title: 'Ponnumthuruthu', price: '₹750 / Person', discount: '15% OFF', image: assets.coorgPackage1 },
+    { title: 'Tadiandamol Peak', price: '₹850 / Person', discount: '10% OFF', image: assets.kolhapurImage },
+    // Add more trips as needed
+  ];
+
   return (
     <div className="grid grid-cols-12 min-h-screen w-screen max-w-full bg-[#EDF0F7]">
-
       {/* Sidebar */}
       <div className="col-span-2 rounded-lg min-h-full">
-        <Sidebar />
+      <Sidebar
+          setActiveSection={setActiveSection}
+          activeSection={activeSection}
+        />
       </div>
 
       {/* Main Content */}
@@ -54,13 +73,12 @@ function Dashboard() {
         <div className="mt-8">
           <h2 className="text-xl font-semibold mb-4">Trips exclusively for you</h2>
           <div className="grid grid-cols-3 gap-4">
-            {/* Example card */}
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-white p-4 rounded-lg shadow-lg relative">
-                <img src={assets.varkalaPackage1} alt="Trip" className="w-full h-32 rounded-md object-cover" />
-                <span className="absolute top-2 left-2 bg-yellow-400 text-white text-sm px-2 py-1 rounded">20% OFF</span>
-                <h3 className="font-bold text-lg mt-2">Maharaja Palace</h3>
-                <p className="text-gray-500">₹750 / Person</p>
+            {trips.map((trip, index) => (
+              <div key={index} className="bg-white p-4 rounded-lg shadow-lg relative flex flex-col items-start">
+                <img src={trip.image}  className="w-full h-32 rounded-lg object-cover" />
+                <span className="absolute top-2 left-2 bg-yellow-400 text-white text-sm px-2 py-1 rounded">{trip.discount}</span>
+                <h3 className="font-bold text-lg mt-2">{trip.title}</h3>
+                <p className="text-gray-500">{trip.price}</p>
               </div>
             ))}
           </div>
@@ -72,7 +90,7 @@ function Dashboard() {
         {/* Notification and Profile */}
         <div className="relative mb-8">
           <button onClick={toggleDropdown} className="flex items-center space-x-2">
-            <Bell className="text-secondary" />
+            <Bell className="text-primary" />
             <img src={assets.profilePhoto} alt="Profile" className="w-12 h-12 rounded-xl" />
           </button>
           {isDropdownOpen && (
@@ -88,7 +106,7 @@ function Dashboard() {
           <h2 className="text-lg font-semibold mb-2">Calendar</h2>
           <div className="grid grid-cols-6 gap-1 text-center">
             {Array.from({ length: 30 }, (_, i) => (
-              <span key={i} className={`py-2 px-2.2 rounded ${i === 23 ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-600'}`}>
+              <span key={i} className={`py-2 px-2.2 rounded ${i === 8 ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-600'}`}>
                 {i + 1}
               </span>
             ))}
@@ -98,13 +116,13 @@ function Dashboard() {
         {/* Top Guides */}
         <div className="bg-white p-4 rounded-lg shadow-lg mt-8 w-full">
           <h2 className="text-lg font-semibold mb-4">Previous guides</h2>
-          {['Priya Sharma', 'Arjun Patel', 'Sneha Reddy'].map((guide, index) => (
+          {guides.map((guide, index) => (
             <div key={index} className="flex items-center justify-between mb-2">
               <div className="flex items-center">
-                <img src={assets.Profile1} alt={guide} className="w-8 h-8 rounded-full" />
+                <img src={guide.image} alt={guide.name} className="w-8 h-8 rounded-full" />
                 <div className="ml-3">
-                  <p className="text-sm font-medium">{guide}</p>
-                  <p className="text-xs text-gray-500">04 Jan - 10 Jan 2024</p>
+                  <p className="text-sm font-medium">{guide.name}</p>
+                  <p className="text-xs text-gray-500">{guide.date}</p>
                 </div>
               </div>
               <button className="text-green-500 font-semibold">Rebook</button>
@@ -112,7 +130,6 @@ function Dashboard() {
           ))}
         </div>
       </div>
-
     </div>
   );
 }

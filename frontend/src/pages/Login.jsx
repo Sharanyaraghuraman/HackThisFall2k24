@@ -1,8 +1,10 @@
 // LoginPage.jsx
 import React from 'react';
 import { assets } from '../assets/assets';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
+    const navigate = useNavigate();
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Left section - Login form */}
@@ -32,8 +34,8 @@ const LoginPage = () => {
             />
             <label className="text-gray-700">Forgot password?</label>
           </div>
-          <button className="w-full py-2 text-white bg-green-500 rounded-md hover:bg-green-600">Login</button>
-          <button className="w-full py-2 text-white bg-green-400 rounded-md hover:bg-green-500">Sign Up</button>
+          <button className="w-full py-2 text-white bg-green-500 rounded-md hover:bg-green-600" onClick={() => navigate('/dashboard')}>Login</button>
+          <button className="w-full py-2 text-white bg-green-400 rounded-md hover:bg-green-500" onClick={() => navigate('/signup')}>Sign Up</button>
         </form>
       </div>
       

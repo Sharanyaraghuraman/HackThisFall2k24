@@ -20,7 +20,7 @@ const Sidebar = ({ setActiveSection, activeSection }) => {
       <ul className="mt-5 space-y-1 text-gray-700">
         <li
           className={`flex items-center gap-4 p-4 cursor-pointer ${
-            activeSection === 'home' ? 'bg-gray-100 border-l-4 border-green-500' : ''
+            activeSection === 'home' ? 'text-green-500' : ''
           }`}
           onClick={() => setActiveSection('home')}
         >
@@ -29,7 +29,7 @@ const Sidebar = ({ setActiveSection, activeSection }) => {
         </li>
         <li
           className={`flex items-center gap-4 p-4 cursor-pointer ${
-            activeSection === 'booking' ? 'bg-gray-100 border-l-4 border-green-500' : ''
+            activeSection === 'booking' ? 'text-green-500' : ''
           }`}
           onClick={() => setActiveSection('booking')}
         >
@@ -38,7 +38,7 @@ const Sidebar = ({ setActiveSection, activeSection }) => {
         </li>
         <li
           className={`flex items-center gap-4 p-4 cursor-pointer ${
-            activeSection === 'fellowtravellar' ? 'bg-gray-100 border-l-4 border-green-500' : ''
+            activeSection === 'fellowtravellar' ? 'text-green-500' : ''
           }`}
           onClick={() => setActiveSection('explore')}
         >
@@ -47,7 +47,7 @@ const Sidebar = ({ setActiveSection, activeSection }) => {
         </li>
         <li
           className={`flex items-center gap-4 p-4 cursor-pointer ${
-            activeSection === 'message' ? 'bg-gray-100 border-l-4 border-green-500' : ''
+            activeSection === 'message' ? 'text-green-500' : ''
           }`}
           onClick={() => setActiveSection('message')}
         >
@@ -56,7 +56,7 @@ const Sidebar = ({ setActiveSection, activeSection }) => {
         </li>
         <li
           className={`flex items-center gap-4 p-4 cursor-pointer ${
-            activeSection === 'support' ? 'bg-gray-100 border-l-4 border-green-500' : ''
+            activeSection === 'support' ? 'text-green-500' : ''
           }`}
           onClick={() => setActiveSection('support')}
         >
@@ -65,14 +65,14 @@ const Sidebar = ({ setActiveSection, activeSection }) => {
         </li>
         <li
           className={`flex items-center gap-4 p-4 cursor-pointer ${
-            activeSection === 'settings' ? 'bg-gray-100 border-l-4 border-green-500' : ''
+            activeSection === 'settings' ? 'text-green-500' : ''
           }`}
           onClick={() => setActiveSection('settings')}
         >
           <Settings />
           <p>Settings</p>
         </li>
-        <li className="flex items-center gap-4 p-4 cursor-pointer text-red-500" onClick={() => navigate('/logout')}>
+        <li className="flex items-center gap-4 p-4 cursor-pointer text-red-500" onClick={() => navigate('/')}>
           <LogOut />
           <p>Logout</p>
         </li>
