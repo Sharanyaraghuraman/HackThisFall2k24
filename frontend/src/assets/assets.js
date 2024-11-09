@@ -14,7 +14,12 @@ import kolhapurImage from './kolhapur.png'
 import varkalaImage from './kerala.png'
 import mapBackground from './map.png'
 import SignupBackground from './signup.png'
-
+import Logo from './logo.png'
+import profilePhoto from './pp.png'
+import Profile1 from './pic1.png'
+import Profile2 from './pic2.png'
+import Profile3 from './pi3.png'
+import Profile4 from './pic4.png'
 
 
 export const assets = {
@@ -33,6 +38,12 @@ export const assets = {
     kolhapurImage,
     varkalaImage,
     mapBackground,
-    SignupBackground
+    SignupBackground,
+    Logo,
+    profilePhoto,
+    Profile1,
+    Profile2,
+    Profile3,
+    Profile4
 
 }
