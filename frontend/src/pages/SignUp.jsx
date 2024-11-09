@@ -1,7 +1,8 @@
 import React from 'react';
 import { assets } from '../assets/assets';
-
+import { useNavigate } from 'react-router-dom';
 export default function SignUpPage() {
+    const navigate = useNavigate();
   return (
     <div className="flex h-screen">
       {/* Left Side - Form */}
@@ -52,6 +53,7 @@ export default function SignUpPage() {
             <button
               type="submit"
               className="w-full py-2 px-4 bg-green-500 text-white font-semibold rounded-full shadow-md hover:bg-green-600 focus:outline-none"
+              onClick={() => navigate('/login')}
             >
               Sign Up
             </button>

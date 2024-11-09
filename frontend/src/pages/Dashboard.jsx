@@ -5,6 +5,7 @@ import { assets } from '../assets/assets';
 
 function Dashboard() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -30,7 +31,10 @@ function Dashboard() {
     <div className="grid grid-cols-12 min-h-screen w-screen max-w-full bg-[#EDF0F7]">
       {/* Sidebar */}
       <div className="col-span-2 rounded-lg min-h-full">
-        <Sidebar />
+      <Sidebar
+          setActiveSection={setActiveSection}
+          activeSection={activeSection}
+        />
       </div>
 
       {/* Main Content */}
