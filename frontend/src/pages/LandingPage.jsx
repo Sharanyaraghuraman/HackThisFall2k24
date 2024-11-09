@@ -4,15 +4,17 @@ import ServicesSection from '../components/OurServices'
 import PopularDestinations from '../components/PopularDestinations'
 import BestPackages from '../components/BestPackages'
 import BookingSteps from '../components/BookingSteps'
+import Footer from '../components/Footer'
 
 function LandingPage() {
   return (
-    <div>
+    <div className='font-outfit'>
         <HeroSection />
         <ServicesSection />
         <PopularDestinations />
         <BestPackages />
         <BookingSteps />
+        <Footer />
     </div>
   )
 }

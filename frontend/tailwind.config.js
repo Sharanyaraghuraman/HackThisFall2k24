@@ -11,6 +11,9 @@ export default {
         'secondary':'#022F74',
         'custom-blue': '#EAEFFF'
       },
+      fontFamily: {
+        outfit: ["outfit", "sans-serif"],
+      },
     },
   },
   plugins: [],
