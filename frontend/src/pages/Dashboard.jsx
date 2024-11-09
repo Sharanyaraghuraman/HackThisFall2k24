@@ -1,45 +1,39 @@
 import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar';
-import { Search, Bell } from 'lucide-react';
+import { Search, Bell, ChevronDown } from 'lucide-react';
 import { assets } from '../assets/assets';
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const navigate = useNavigate();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  // Guides data array
   const guides = [
     { name: 'Priya Sharma', date: '04 Jan - 10 Jan 2024', image: assets.Profile1 },
     { name: 'Arjun Patel', date: '05 Feb - 10 Feb 2024', image: assets.Profile2 },
     { name: 'Sneha Reddy', date: '04 May - 08 May 2024', image: assets.Profile3 },
-    // Add more guides as needed
   ];
 
-  // Exclusive trips data array
   const trips = [
     { title: 'Maharaja Palace', price: '₹750 / Person', discount: '20% OFF', image: assets.varkalaPackage1 },
     { title: 'Ponnumthuruthu', price: '₹750 / Person', discount: '15% OFF', image: assets.coorgPackage1 },
     { title: 'Tadiandamol Peak', price: '₹850 / Person', discount: '10% OFF', image: assets.kolhapurImage },
-    // Add more trips as needed
   ];
 
   return (
-    <div className="grid grid-cols-12 min-h-screen w-screen max-w-full bg-[#EDF0F7]">
+    <div className="grid grid-cols-12 min-h-screen w-screen max-w-full bg-[#f3f4f6]">
       {/* Sidebar */}
       <div className="col-span-2 rounded-lg min-h-full">
-      <Sidebar
-          setActiveSection={setActiveSection}
-          activeSection={activeSection}
-        />
+        <Sidebar setActiveSection={setActiveSection} activeSection={activeSection} />
       </div>
 
       {/* Main Content */}
       <div className="col-span-8 rounded-lg min-h-fit pt-4 px-4">
-        {/* Navbar Center */}
         <div className="flex justify-between items-center gap-8">
           <div className="flex flex-col justify-center">
             <h1 className="text-3xl font-bold text-zinc-900">Welcome, John Doe</h1>
@@ -75,8 +69,10 @@ function Dashboard() {
           <div className="grid grid-cols-3 gap-4">
             {trips.map((trip, index) => (
               <div key={index} className="bg-white p-4 rounded-lg shadow-lg relative flex flex-col items-start">
-                <img src={trip.image}  className="w-full h-32 rounded-lg object-cover" />
-                <span className="absolute top-2 left-2 bg-yellow-400 text-white text-sm px-2 py-1 rounded">{trip.discount}</span>
+                <img src={trip.image} className="w-full h-32 rounded-lg object-cover" />
+                <span className="absolute top-2 left-2 bg-yellow-400 text-white text-sm px-2 py-1 rounded">
+                  {trip.discount}
+                </span>
                 <h3 className="font-bold text-lg mt-2">{trip.title}</h3>
                 <p className="text-gray-500">{trip.price}</p>
               </div>
@@ -92,10 +88,16 @@ function Dashboard() {
           <button onClick={toggleDropdown} className="flex items-center space-x-2">
             <Bell className="text-primary" />
             <img src={assets.profilePhoto} alt="Profile" className="w-12 h-12 rounded-xl" />
+            <ChevronDown className="text-gray-500" />
           </button>
           {isDropdownOpen && (
             <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg">
-              <button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Update Profile</button>
+              <button
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                onClick={() => navigate('/editprofile')}
+              >
+                Update Profile
+              </button>
               <button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</button>
             </div>
           )}
@@ -106,7 +108,10 @@ function Dashboard() {
           <h2 className="text-lg font-semibold mb-2">Calendar</h2>
           <div className="grid grid-cols-6 gap-1 text-center">
             {Array.from({ length: 30 }, (_, i) => (
-              <span key={i} className={`py-2 px-2.2 rounded ${i === 8 ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-600'}`}>
+              <span
+                key={i}
+                className={`py-2 px-2.2 rounded ${i === 8 ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-600'}`}
+              >
                 {i + 1}
               </span>
             ))}
