@@ -45,7 +45,14 @@ app.post("/register/tourist", async (req, res) => {
     if (!email || !password) return res.status(400).send("Missing fields");
 
     const hashedPassword = await bcrypt.hash(password, 10);
+
     const tourist = new Tourist({ ...req.body, password: hashedPassword });
+    tourist.validate((err) => {
+      if (err) {
+        res.status(400).send("Invalid form data");
+        return;
+      }
+    });
     await tourist.save();
 
     res.status(201).send("Tourist registered successfully");
@@ -61,6 +68,12 @@ app.post("/register/guide", async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
     const guide = new Guide({ ...req.body, password: hashedPassword });
+    guide.validate((err) => {
+      if (err) {
+        res.status(400).send("Invalid form data");
+        return;
+      }
+    });
     await guide.save();
 
     res.status(201).send("Guide registered successfully");
