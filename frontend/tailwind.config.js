@@ -8,7 +8,7 @@ export default {
     extend: {
       colors:{
         'primary':'#00A651',
-        'secondary':'#022F74',
+        'secondary':'darkgreen',
         'custom-blue': '#EAEFFF'
       },
       fontFamily: {

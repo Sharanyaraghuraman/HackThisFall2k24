@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { assets } from '../assets/assets';
+import { useNavigate } from 'react-router-dom';
 
 function BestPackages() {
+  const navigate = useNavigate();
   const [selectedTab, setSelectedTab] = useState('Hot Deals');
 
   const tabs = ['Hot Deals', 'Backpack', 'Coorg', 'Kolhapur', 'Varkala', 'More'];
@@ -51,7 +53,7 @@ function BestPackages() {
 
         {/* Discover More Button */}
         <div className="flex justify-center mt-8">
-          <button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-full">
+          <button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-full" onClick={() => navigate('/login')}>
             Discover More
           </button>
         </div>

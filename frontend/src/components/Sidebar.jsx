@@ -1,13 +1,25 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { House, Wallet, Globe, MessageSquareMore, Users, LogOut, Settings } from 'lucide-react';
-import { assets } from '../assets/assets'; // Make sure assets are properly imported
+import { House, Wallet, Globe, Users, LogOut, Settings } from 'lucide-react';
+import { assets } from '../assets/assets';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Sidebar = ({ setActiveSection, activeSection }) => {
   const navigate = useNavigate();
 
+  // Handle logout with toast message
+  const handleLogout = () => {
+    toast.success('Logged out successfully!');
+    setTimeout(() => {
+      navigate('/');
+    }, 2500); // Delay to allow the toast to show before navigation
+  };
+
   return (
     <div className="fixed top-0 left-0 w-64 min-h-screen bg-white shadow-lg font-outfit">
+      <ToastContainer position="top-right" autoClose={1500} hideProgressBar />
+      
       <div className="flex justify-center py-5 border-b">
         <img
           src={assets.Logo}
@@ -38,30 +50,21 @@ const Sidebar = ({ setActiveSection, activeSection }) => {
         </li>
         <li
           className={`flex items-center gap-4 p-4 cursor-pointer ${
-            activeSection === 'fellowtravellar' ? 'text-green-500' : ''
+            activeSection === 'guides' ? 'text-green-500' : ''
           }`}
-          onClick={() => setActiveSection('explore')}
+          onClick={() => setActiveSection('guides')}
         >
           <Globe />
-          <p>Explore</p>
+          <p>Guides</p>
         </li>
         <li
           className={`flex items-center gap-4 p-4 cursor-pointer ${
-            activeSection === 'message' ? 'text-green-500' : ''
+            activeSection === 'solotravellar' ? 'text-green-500' : ''
           }`}
-          onClick={() => setActiveSection('message')}
-        >
-          <MessageSquareMore />
-          <p>Message</p>
-        </li>
-        <li
-          className={`flex items-center gap-4 p-4 cursor-pointer ${
-            activeSection === 'support' ? 'text-green-500' : ''
-          }`}
-          onClick={() => setActiveSection('support')}
+          onClick={() => setActiveSection('solotravellar')}
         >
           <Users />
-          <p>Support</p>
+          <p>Solo Traveler</p>
         </li>
         <li
           className={`flex items-center gap-4 p-4 cursor-pointer ${
@@ -72,7 +75,10 @@ const Sidebar = ({ setActiveSection, activeSection }) => {
           <Settings />
           <p>Settings</p>
         </li>
-        <li className="flex items-center gap-4 p-4 cursor-pointer text-red-500" onClick={() => navigate('/')}>
+        <li
+          className="flex items-center gap-4 p-4 cursor-pointer text-red-500"
+          onClick={handleLogout}
+        >
           <LogOut />
           <p>Logout</p>
         </li>

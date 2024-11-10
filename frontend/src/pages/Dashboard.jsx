@@ -5,8 +5,11 @@ import 'react-calendar/dist/Calendar.css';
 import { Search, Bell, ChevronDown } from 'lucide-react';
 import { assets } from '../assets/assets';
 import { useNavigate } from 'react-router-dom';
-import Support from '../components/Support';
-
+import Support from '../components/SoloTravelar';
+import Guides from '../components/Guides';
+import BookingTrips from '../components/BoookingTrips';
+import FindSoloTravelers from '../components/SoloTravelar';
+import Settings from '../components/Settings';
 function Dashboard() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -33,6 +36,14 @@ function Dashboard() {
     switch (activeSection) {
       case 'support':
         return <Support />;
+        case 'guides':
+        return <Guides />;
+        case 'booking':
+        return <BookingTrips />;
+        case 'solotravellar':
+        return <FindSoloTravelers />;
+        case 'settings':
+        return <Settings />;
       default:
         return (
           <>

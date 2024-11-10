@@ -1,8 +1,10 @@
 import React from 'react';
 import Navbar from './Navbar';
 import { assets } from '../assets/assets';
+import { useNavigate } from 'react-router-dom';
 
 function HeroSection() {
+  const navigate = useNavigate();
   return (
     <>
       <section
@@ -17,7 +19,7 @@ function HeroSection() {
           <p className="text-lg md:text-xl text-white mt-4 max-w-md mx-auto">
             We always try to make our customer Happy. We provide all kinds of facilities. Your satisfaction is our main priority.
           </p>
-          <button className="mt-8 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded">
+          <button className="mt-8 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded" onClick={() => navigate('/login')}>
             Discover More
           </button>
         </div>
